@@ -1,0 +1,14 @@
+@use '../global/variables' as *;
+
+@mixin text-style($family, $size: 16px, $color: white, $weight: 600){
+    font-family: $family;
+    font-size: $size;
+    color: $color;
+    font-weight: $weight    
+}
+
+@mixin responsive($point){
+    @media screen and (max-width: map-get($break-point, $point)) {
+        @content;
+    }
+}

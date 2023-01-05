@@ -1,0 +1,104 @@
+@use '../global/variables' as *;
+@use '../util/functions' as *;
+
+.hamburger{
+    @media screen and (min-width: 766px) {
+        display: none;
+    }
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    .hamburger__element{
+        width: 25px;
+        height: 3px;
+        background-color: $color-white;
+        border-radius: 1px;
+        margin-bottom: 4px;
+        transition: .3s;
+    }
+}
+.active{
+    .up-bar{
+        transform: translate(0, 7px) rotate(40deg);
+        background-color: $hover-button;
+    }
+    .center-bar{
+        transform: translate(40%);
+        opacity: 0;
+    }
+    .down-bar{
+        transform: translate(0, -7px) rotate(-40deg);
+        background-color: $hover-button;
+    }
+
+    .nav__menu-burger{
+        height: 90vh;
+        padding-bottom: 100px;
+    }
+    .main{
+        display: none;
+    }
+}
+
+.nav__menu-burger{
+    @include responsive(sm){
+        overflow: hidden;
+        overflow-y: scroll;
+        background-color: #070724;
+        width: 100%;
+        height: 0px;
+        opacity: 1;
+        z-index: 10;
+        transition: .3s linear;
+        position: fixed;
+    }
+    @media screen and (min-width: 766px){
+        display: none;
+    }
+    .planet{
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid $hover-button;
+        cursor: pointer;
+        display: flex;
+        height: 65px;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+        padding: 25px;
+        &:hover{
+            background-color: $hover-button;
+        }
+        z-index: 100;
+
+        .color-and-planet{
+            display: flex;
+            height: 100%;
+            align-items: center;
+            @each $name, $color in $color-planets{
+                .menu-#{$name}{
+                    background-color: $color;
+                }
+            }
+            span{
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                margin-right: 25px;
+            }
+
+            p{
+                @include text-style($font-subtitle, 1rem, $color-white,600);
+            }
+        }
+
+        p{
+            @include text-style($font-subtitle, 1rem, $color-white,300);
+        }
+    }
+
+    .planet-active{
+        background-color: $hover-button;
+    }
+}

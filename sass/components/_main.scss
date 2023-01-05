@@ -1,0 +1,195 @@
+@use '../global/variables' as *;
+@use '../util/functions' as *;
+
+.main{
+    @include responsive(md){
+        display: block;
+        margin: 10vh 40px 5vh 40px;
+    }
+    display: grid;
+    grid-template-columns: 70% auto;
+    margin: 18vh 40px;
+    .picture{
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        position: relative;
+        @include responsive(sm){
+            height: 50vh;
+        }
+
+        .img{
+            @include responsive(md){
+                transform: scale(0.6);
+            }
+            @include responsive(sm){
+                transform: scale(.4);
+            }
+        }
+        .img-geology{
+            position: absolute;
+            transform: scale(.5);
+            top: 50%;
+            @include responsive(md){
+                transform: scale(0.3);
+                top: 25%;
+            }
+            @include responsive(sm){
+                transform: scale(0.2);
+                top: 10%;
+            }
+        }
+    }
+
+    .main-info{
+        @include responsive(md){
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 40% 50%;
+            justify-content: space-between;
+            padding-top: 50px;
+        }
+        @include responsive(sm){
+            grid-template-columns: 100%;
+            padding-top: 0;
+            position: static;
+        }
+        position: relative;
+
+        .main-text{
+            @include responsive(sm){
+                display: block;
+            }
+            .main-text__planet-name{
+                @include responsive(md){
+                    font-size: 3rem;
+                }
+                @include responsive(sm){
+                 text-align: center;   
+                }
+                position: relative;
+                @include text-style($font-title, 80px, $color-white, 500);
+                margin-bottom: 10px;
+            }
+    
+            .main-text__planet-info{
+                @include responsive(md){
+                    font-size: .7rem;
+                }
+                @include responsive(sm){
+                    text-align: center;   
+                   }
+                @include text-style($font-subtitle, 1rem, $color-white, 100);
+                opacity: .8;
+                line-height: 1.5;
+            }
+    
+            .source-link{
+                @include responsive(sm){
+                    justify-content: center;
+                }
+                display: flex;
+                align-items: center;
+                margin: 40px 0;
+                position: relative;
+                .source-link__source{
+                    @include text-style($font-subtitle, .9rem, $color-white, 100);
+                    opacity: .8;
+                    margin-right: 8px;
+                }
+    
+                .source-link__wikipedia{
+                    @include text-style($font-subtitle, 1rem, $color-white, 100);
+                    opacity: .8;
+                    text-decoration: underline;
+                }
+                i{
+                    margin-left: 5px;
+                    color: white;
+                    opacity: .7;
+                }
+            }   
+        }
+
+        .buttons{
+            @include responsive(md){
+                display: block;
+                padding-top: 20px;
+            }
+            @include responsive(sm){
+                display: none;
+            }
+            /*@include responsive(sm){
+                position: absolute;
+                display: flex;
+                transform: translateY(-780%);
+                margin: auto -40px;
+                border-bottom: 1px solid $hover-button;
+                justify-content: space-between;
+                padding: 0;
+                height: 50px;
+                width: 100%;
+            }*/
+
+            .btn-active{
+                background-color: map-get($color-planets, 'mercury-color');   
+            }
+
+            display: grid;
+            grid-template-columns: auto;
+
+            .overview{
+                @include responsive(md){
+                    margin-top: 20px;
+                }
+                @include responsive(sm){
+                    border: none;
+                    width: auto;
+                    height: 100%;
+                    margin: 0 30px;
+                    position: relative;
+                }
+                width: 100%;
+                height: 40px;
+                background-color: transparent;
+                border: 1px solid $hover-button;
+                margin: 7px 0;
+                cursor: pointer;
+                display: flex;
+                &:hover{
+                    /*@include responsive(sm){
+                        &::after{
+                            content: "";
+                            display: inline-block;  
+                            background-color: map-get($color-planets, 'mercury-color');
+                            opacity: .7;
+                            width: 100%;
+                            height: 3px;
+                            position: absolute;
+                            bottom: 0;
+                        }
+                    }*/
+                    background-color: $hover-button;
+                }
+
+                .num{
+                    @include responsive(sm){
+                        display: none;
+                    }
+                    @include text-style($font-subtitle, .8rem, $color-white-opacity, 600);
+                    margin: auto 20px;
+                    opacity: .55;
+                }
+                .buttons__layer{
+                    @include responsive(sm){
+                        font-size: .8rem;
+                        font-weight: 700;
+                        color: $color-white-opacity;
+                    }
+                    @include text-style($font-subtitle, .8rem, $color-white, 100);
+                    margin: auto 0;
+                }
+            }
+        }
+    }
+}
